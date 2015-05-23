@@ -1,4 +1,12 @@
 <?php
+/**
+ * Field plugin Subpagelist
+ *
+ * @package   Kirby CMS
+ * @author    Flo Kosiol <git@flokosiol.de>
+ * @link      http://flokosiol.de
+ * @version   1.0.2
+ */
 
 class SubpagelistField extends BaseField {
 
@@ -31,6 +39,25 @@ class SubpagelistField extends BaseField {
 
   }
 
+  /**
+   * Set field property and default value if required
+   *
+   * @param string $option
+   * @param mixed  $value
+   */
+  public function __set($option, $value) {
+      
+    /* Set given value */
+    $this->$option = $value;
+
+    /* Validation */
+    switch($option) {
+      case 'flip':
+        if(!is_bool($value))
+          $this->flip = false;
+        break;          
+    }
+  }
     
   /**
    * Generate label markup
@@ -86,7 +113,14 @@ class SubpagelistField extends BaseField {
   public function subpages() {
 
     $field = &$this;
-      return $this->page()->children();
-    }
+    $subpages = $this->page()->children();
+
+    if (isset($this->flip) && $this->flip == TRUE) {
+      $subpages = $subpages->flip();
+    } 
+
+    return $subpages;
+  }
+
 
 }
