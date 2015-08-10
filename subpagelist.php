@@ -5,7 +5,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.2
+ * @version   1.0.3
  */
 
 class SubpagelistField extends BaseField {
@@ -66,21 +66,9 @@ class SubpagelistField extends BaseField {
    */
   public function label() {
     
-    $add = new Brick('a');
-    $add->addClass('subpagelist-button file-add-button hgroup-option-right');
-    $add->html('<i class="icon icon-left fa fa-plus-circle"></i>' . l('pages.show.subpages.add'));
-    $add->attr('href', purl($this->page(), 'add'));
-
-    $edit = new Brick('a');
-    $edit->addClass('subpagelist-button file-edit-button hgroup-option-right');
-    $edit->html('<i class="icon icon-left fa fa-pencil"></i>' . l('pages.show.subpages.edit'));
-    $edit->attr('href', purl('subpages/index/'.$this->page()->id()));
-
     $label = parent::label();
     $label->addClass('hgroup-title');
-    $label->append($edit);
-    $label->append($add);
-
+    
     return $label;
 
   }
@@ -94,12 +82,30 @@ class SubpagelistField extends BaseField {
 
     $wrapper = new Brick('div');
     $wrapper->addClass('subpagelist');
-    $wrapper->data(array(
-        'field' => 'subpagelist',
-        'name'  => $this->name(),
-        'page'  => $this->page(),
+    // $wrapper->data(array(
+    //     'field' => 'subpagelist',
+    //     'name'  => $this->name(),
+    //     'page'  => $this->page(),
+    // ));
+
+    $children = $this->subpages();
+    
+    // add pagination to the subpages
+    $limit = ($this->limit()) ? $this->limit() : 1000;
+    $children = $children->paginate($limit, array('page' => get('page')));
+
+    // use existing snippet to build the list
+    // @see panel/app/controllers/views/pages.php
+    $subpages = new Snippet('pages/sidebar/subpages', array(
+      'title'      => l('pages.show.subpages.title'),
+      'page'       => $this->page(),
+      'subpages'   => $children,
+      'addbutton'  => !api::maxPages($this, $this->subpages()->max()),
+      'pagination' => $children->pagination(),
     ));
-    $wrapper->html(tpl::load(__DIR__ . DS . 'template.php', array('field' => $this)));
+
+    // use template with defined vars
+    $wrapper->html(tpl::load(__DIR__ . DS . 'template.php', array('field' => $this, 'subpages' => $subpages ,'page' => $this->page())));
     return $wrapper;
 
   }
@@ -121,6 +127,5 @@ class SubpagelistField extends BaseField {
 
     return $subpages;
   }
-
 
 }
