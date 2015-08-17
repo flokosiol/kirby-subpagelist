@@ -42,7 +42,7 @@ For more information, have a look at [Working with Git](http://getkirby.com/blog
 
 ## Usage
 
-Now you are ready to use the new field `subpagelist` in your blueprints. For now there are two optional parameter `flip` which returns the subpages in reverse order and `limit` which adds pagination.
+Now you are ready to use the new field `subpagelist` in your blueprints. 
 
 ```
 ...
@@ -50,8 +50,36 @@ fields:
 	mysubpagelist:
 		label: My Subpagelist
 		type:  subpagelist
+...
+```
+
+
+### Optional settings
+
+There are some optional parameter, which change the display of the subpagelist
+
++ `flip` – returns the subpages in reverse order 
++ `limit` – adds pagination after x items
+
+The parameter `filter` needs some more configuration:
+
++ `visible`– returns only visible pages if set to `TRUE` and only invisible ones if set to `FALSE`
++ `template`– filters by [used](http://getkirby.com/docs/cheatsheet/page/template) (and not by [intended](http://getkirby.com/docs/cheatsheet/page/intended-template)) template
+
+### Example
+
+```
+...
+fields:
+	mysubpagelist:
+		label: My Subpagelist
+		type:  subpagelist
+		
 		flip:  true
 		limit: 32
+		filter:
+			visible: true
+			template: mytemplate
 ...
 ```
 

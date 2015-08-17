@@ -15,3 +15,7 @@
 ### Changed
 + make use of the `pages/sidebar/subpages`-snippet to generate the list of subpages
 
+## 1.0.4
+
+### Added
++ optional blueprint field parameter `filter` to show only visible/invisble pages or pages with a specific template

@@ -91,7 +91,7 @@ class SubpagelistField extends BaseField {
     $children = $this->subpages();
     
     // add pagination to the subpages
-    $limit = ($this->limit()) ? $this->limit() : 1000;
+    $limit = ($this->limit()) ? $this->limit() : 10000;
     $children = $children->paginate($limit, array('page' => get('page')));
 
     // use existing snippet to build the list
@@ -121,9 +121,31 @@ class SubpagelistField extends BaseField {
     $field = &$this;
     $subpages = $this->page()->children();
 
+    // Check for filters
+    if (isset($this->filter) && is_array($this->filter)) {
+      $filter = $this->filter();
+
+      // only visible subpages
+      if (isset($filter['visible']) && $filter['visible'] == TRUE) {
+        $subpages = $subpages->visible();
+      }
+
+      // only invisible subpages
+      if (isset($filter['visible']) && $filter['visible'] == FALSE) {
+        $subpages = $subpages->invisible();
+      }
+
+      // only specific template
+      if (!empty($filter['template'])) {
+        $subpages = $subpages->filterBy('template',$filter['template']);
+      }
+    }
+
+    // reverse order
     if (isset($this->flip) && $this->flip == TRUE) {
       $subpages = $subpages->flip();
     } 
+
 
     return $subpages;
   }
