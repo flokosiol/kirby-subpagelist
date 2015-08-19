@@ -19,3 +19,14 @@
 
 ### Added
 + optional blueprint field parameter `filter` to show only visible/invisble pages or pages with a specific template
+
+## 1.0.5
+
+### Fixed
++ a bug when you couldn't add new subpages as long as at least one subpage exists
+
+### Changed
++ removed obsolete code since using Kirby's core listing (as of version 1.0.3)
+
+### Removed
++ custom language folder

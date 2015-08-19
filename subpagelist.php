@@ -5,12 +5,10 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.3
+ * @version   1.0.5
  */
 
 class SubpagelistField extends BaseField {
-
-  const LANG_DIR = 'languages';
 
   /**
    * Assets
@@ -20,24 +18,6 @@ class SubpagelistField extends BaseField {
       'subpagelist.css',
     ),
   );
-
-
-  /**
-   * Constructor
-   */
-  public function __construct() {
-    
-    $baseDir = __DIR__ . DS . self::LANG_DIR . DS;
-    $lang    = panel()->language();
-    
-    if (file_exists($baseDir . $lang . '.php')) {
-      require $baseDir . $lang . '.php';
-    } 
-    else {
-      require $baseDir . 'en.php';
-    }
-
-  }
 
   /**
    * Set field property and default value if required
@@ -82,11 +62,6 @@ class SubpagelistField extends BaseField {
 
     $wrapper = new Brick('div');
     $wrapper->addClass('subpagelist');
-    // $wrapper->data(array(
-    //     'field' => 'subpagelist',
-    //     'name'  => $this->name(),
-    //     'page'  => $this->page(),
-    // ));
 
     $children = $this->subpages();
     
@@ -105,7 +80,7 @@ class SubpagelistField extends BaseField {
     ));
 
     // use template with defined vars
-    $wrapper->html(tpl::load(__DIR__ . DS . 'template.php', array('field' => $this, 'subpages' => $subpages ,'page' => $this->page())));
+    $wrapper->html(tpl::load(__DIR__ . DS . 'template.php', array('subpages' => $subpages)));
     return $wrapper;
 
   }
@@ -145,7 +120,6 @@ class SubpagelistField extends BaseField {
     if (isset($this->flip) && $this->flip == TRUE) {
       $subpages = $subpages->flip();
     } 
-
 
     return $subpages;
   }
