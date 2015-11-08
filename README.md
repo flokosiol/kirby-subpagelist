@@ -22,8 +22,7 @@ Add (if necessary) a new `fields` folder to your `site` directory. Then copy the
 site/
 	fields/
 		subpagelist/
-			assests/
-			languages/
+			assets/
 			subpagelist.php
 			template.php
 ```
