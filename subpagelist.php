@@ -5,7 +5,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   1.0.5
+ * @version   2.0.1
  */
 
 use Kirby\Panel\Snippet;
@@ -69,7 +69,6 @@ class SubpagelistField extends BaseField {
     
     // add pagination to the subpages
     $limit = ($this->limit()) ? $this->limit() : 10000;
-    // $children = $children->paginate($limit, array('page' => get('page'))); // Kirby < 2.2
     $children = $children->paginated('sidebar');
 
     // Kirby >= 2.2
@@ -86,9 +85,7 @@ class SubpagelistField extends BaseField {
       'title'      => l('pages.show.subpages.title'),
       'page'       => $this->page(),
       'subpages'   => $children,
-      // 'addbutton'  => !api::maxPages($this, $this->subpages()->max()), // Kirby < 2.2
       'addbutton'  => $this->page->addButton(),
-      // 'pagination' => $children->pagination(),
       'pagination' => $pagination,
 
     ));
