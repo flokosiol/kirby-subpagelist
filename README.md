@@ -4,6 +4,8 @@ With this field plugin for [Kirby 2](http://getkirby.com) you can display the li
 
 ### Please notice
 
+**You need Kirby 2.2.1 or newer to use this version of the plugin.**
+
 With this plugin I basically wanted to level up my Kirby skills (learning by doing). It is inspired by [this topic](http://forum.getkirby.com/t/showing-only-subpages/227) by [thguenther](http://forum.getkirby.com/users/thguenther/activity). If you have any tipps or suggestions, please contact me.
 
 ## Preview
@@ -20,12 +22,11 @@ Add (if necessary) a new `fields` folder to your `site` directory. Then copy the
 
 ```
 site/
-	fields/
-		subpagelist/
-			assests/
-			languages/
-			subpagelist.php
-			template.php
+  fields/
+    subpagelist/
+      assests/
+      subpagelist.php
+      template.php
 ```
 
 ### Git Submodule
@@ -47,9 +48,9 @@ Now you are ready to use the new field `subpagelist` in your blueprints.
 ```
 ...
 fields:
-	mysubpagelist:
-		label: My Subpagelist
-		type:  subpagelist
+  mysubpagelist:
+   label: My Subpagelist
+   type:  subpagelist
 ...
 ```
 
@@ -59,7 +60,6 @@ fields:
 There are some optional parameter, which change the display of the subpagelist
 
 + `flip` – returns the subpages in reverse order 
-+ `limit` – adds pagination after x items
 
 The parameter `filter` needs some more configuration:
 
@@ -71,25 +71,35 @@ The parameter `filter` needs some more configuration:
 ```
 ...
 fields:
-	mysubpagelist:
-		label: My Subpagelist
-		type:  subpagelist
+  mysubpagelist:
+    label: My Subpagelist
+      type:  subpagelist
 		
-		flip:  true
-		limit: 32
-		filter:
-			visible: true
-			template: mytemplate
+      flip:  true
+      filter:
+        visible: true
+        template: mytemplate
 ...
 ```
 
-### Hiding the subpages in the sidebar
+### Optional pages settings
+
+The following parameter will be inherited from the `pages` settings.
+
++ `limit` – adds pagination after x items
+
+```
+...
+pages:  
+  limit: 32  
+...
+```
 
 To hide the subpages in the sidebar, simply add this to your blueprint (as described in the [Kirby docs](http://getkirby.com/docs/panel/blueprints/page-settings#hide-subpages)):
 
 ```
 ...
 pages:  
-	hide: true  
+  hide: true  
 ...
 ```

@@ -8,6 +8,8 @@
  * @version   1.0.5
  */
 
+use Kirby\Panel\Snippet;
+
 class SubpagelistField extends BaseField {
 
   /**
@@ -67,16 +69,28 @@ class SubpagelistField extends BaseField {
     
     // add pagination to the subpages
     $limit = ($this->limit()) ? $this->limit() : 10000;
-    $children = $children->paginate($limit, array('page' => get('page')));
+    // $children = $children->paginate($limit, array('page' => get('page'))); // Kirby < 2.2
+    $children = $children->paginated('sidebar');
+
+    // Kirby >= 2.2
+    $pagination = new Snippet('pagination', array(
+      'pagination' => $children->pagination(),
+      'nextUrl'    => $children->pagination()->nextPageUrl(),
+      'prevUrl'    => $children->pagination()->prevPageUrl(),
+    ));
 
     // use existing snippet to build the list
     // @see panel/app/controllers/views/pages.php
+    // Kirby 2.2 @see /panel/app/src/panel/models/page/sidebar.php
     $subpages = new Snippet('pages/sidebar/subpages', array(
       'title'      => l('pages.show.subpages.title'),
       'page'       => $this->page(),
       'subpages'   => $children,
-      'addbutton'  => !api::maxPages($this, $this->subpages()->max()),
-      'pagination' => $children->pagination(),
+      // 'addbutton'  => !api::maxPages($this, $this->subpages()->max()), // Kirby < 2.2
+      'addbutton'  => $this->page->addButton(),
+      // 'pagination' => $children->pagination(),
+      'pagination' => $pagination,
+
     ));
 
     // use template with defined vars

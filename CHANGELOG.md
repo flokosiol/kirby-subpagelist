@@ -30,3 +30,8 @@
 
 ### Removed
 + custom language folder
+
+## 2.0.1
+
+### Changed
++ complete rewrite for Kirby 2.2
