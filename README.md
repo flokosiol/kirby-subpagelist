@@ -4,6 +4,11 @@ With this field plugin for [Kirby 2](http://getkirby.com) you can display the li
 
 ### Please notice
 
+---
+**To use this plugin with Kirby 2.2.1 or newer, please check out the [develop](https://github.com/flokosiol/kirby-subpagelist/tree/develop) branch!**
+
+---
+
 With this plugin I basically wanted to level up my Kirby skills (learning by doing). It is inspired by [this topic](http://forum.getkirby.com/t/showing-only-subpages/227) by [thguenther](http://forum.getkirby.com/users/thguenther/activity). If you have any tipps or suggestions, please contact me.
 
 ## Preview
