@@ -35,3 +35,8 @@
 
 ### Changed
 + complete rewrite for Kirby 2.2
+
+## 2.0.2
+
+### Fixed
++ only use the field's label

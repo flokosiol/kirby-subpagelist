@@ -5,7 +5,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   2.0.1
+ * @version   2.0.2
  */
 
 use Kirby\Panel\Snippet;
@@ -47,12 +47,7 @@ class SubpagelistField extends BaseField {
    * @return string
    */
   public function label() {
-    
-    $label = parent::label();
-    $label->addClass('hgroup-title');
-    
-    return $label;
-
+    return NULL;
   }
 
   /**
@@ -82,7 +77,7 @@ class SubpagelistField extends BaseField {
     // @see panel/app/controllers/views/pages.php
     // Kirby 2.2 @see /panel/app/src/panel/models/page/sidebar.php
     $subpages = new Snippet('pages/sidebar/subpages', array(
-      'title'      => l('pages.show.subpages.title'),
+      'title'      => $this->i18n($this->label),
       'page'       => $this->page(),
       'subpages'   => $children,
       'addbutton'  => $this->page->addButton(),
