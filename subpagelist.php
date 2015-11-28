@@ -120,6 +120,18 @@ class SubpagelistField extends BaseField {
       if (!empty($filter['template'])) {
         $subpages = $subpages->filterBy('template',$filter['template']);
       }
+
+      // only specific intendedTemplate
+      if (!empty($filter['intendedTemplate'])) {
+        $subpages = $subpages->filterBy('intendedTemplate',$filter['template']);
+      }
+
+      // filterBy
+      if (!empty($filter['filterBy']) && !empty($filter['filterMethod']) && !empty($filter['filterValue'])) {
+        $subpages = $subpages->filterBy($filter['filterBy'],$filter['filterMethod'],$filter['filterValue']);
+      }
+
+      
     }
 
     // reverse order
