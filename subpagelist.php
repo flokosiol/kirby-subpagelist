@@ -33,9 +33,9 @@ class SubpagelistField extends BaseField {
     $this->$option = $value;
 
     /* Validation */
-    switch($option) {
+    switch ($option) {
       case 'flip':
-        if(!is_bool($value))
+        if (!is_bool($value))
           $this->flip = false;
         break;          
     }
@@ -66,7 +66,6 @@ class SubpagelistField extends BaseField {
     $limit = ($this->limit()) ? $this->limit() : 10000;
     $children = $children->paginated('sidebar');
 
-    // Kirby >= 2.2
     $pagination = new Snippet('pagination', array(
       'pagination' => $children->pagination(),
       'nextUrl'    => $children->pagination()->nextPageUrl(),
@@ -74,8 +73,7 @@ class SubpagelistField extends BaseField {
     ));
 
     // use existing snippet to build the list
-    // @see panel/app/controllers/views/pages.php
-    // Kirby 2.2 @see /panel/app/src/panel/models/page/sidebar.php
+    // @see /panel/app/src/panel/models/page/sidebar.php
     $subpages = new Snippet('pages/sidebar/subpages', array(
       'title'      => $this->i18n($this->label),
       'page'       => $this->page(),
