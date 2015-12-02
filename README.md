@@ -29,7 +29,7 @@ Add (if necessary) a new `fields` folder to your `site` directory. Then copy the
 site/
 	fields/
 		subpagelist/
-			assests/
+			assets/
 			subpagelist.php
 			template.php
 ```
@@ -40,7 +40,7 @@ It is possible to add this plugin as a Git submodule.
 
 ```bash
 $ cd your/project/root  
-$ git submodule add git@github.com:flokosiol/kirby-subpagelist.git site/fields/subpagelist  
+$ git submodule add https://github.com/flokosiol/kirby-subpagelist.git site/fields/subpagelist
 ```
 
 For more information, have a look at [Working with Git](http://getkirby.com/blog/working-with-git) in the Kirby blog.
