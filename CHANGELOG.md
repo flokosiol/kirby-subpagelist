@@ -40,3 +40,8 @@
 
 ### Fixed
 + only use the field's label
+
+## 2.0.3
+
+### Added
++ additional filter 

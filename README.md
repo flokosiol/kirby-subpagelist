@@ -4,9 +4,14 @@ With this field plugin for [Kirby 2](http://getkirby.com) you can display the li
 
 ### Please notice
 
-**You need Kirby 2.2.1 or newer to use this version of the plugin.**
-
 With this plugin I basically wanted to level up my Kirby skills (learning by doing). It is inspired by [this topic](http://forum.getkirby.com/t/showing-only-subpages/227) by [thguenther](http://forum.getkirby.com/users/thguenther/activity). If you have any tipps or suggestions, please contact me.
+
+## Requirements
+
+
+**You need Kirby 2.2.1 or newer to use this version of the plugin.**  
+For older versions of Kirby 2, please check out the [legacy](https://github.com/flokosiol/kirby-subpagelist/tree/legacy) branch!
+
 
 ## Preview
 
@@ -22,11 +27,11 @@ Add (if necessary) a new `fields` folder to your `site` directory. Then copy the
 
 ```
 site/
-  fields/
-    subpagelist/
-      assests/
-      subpagelist.php
-      template.php
+	fields/
+		subpagelist/
+			assests/
+			subpagelist.php
+			template.php
 ```
 
 ### Git Submodule
@@ -48,9 +53,9 @@ Now you are ready to use the new field `subpagelist` in your blueprints.
 ```
 ...
 fields:
-  mysubpagelist:
-   label: My Subpagelist
-   type:  subpagelist
+	mysubpagelist:
+		label: My Subpagelist
+		type:  subpagelist
 ...
 ```
 
@@ -64,21 +69,25 @@ There are some optional parameter, which change the display of the subpagelist
 The parameter `filter` needs some more configuration:
 
 + `visible`– returns only visible pages if set to `TRUE` and only invisible ones if set to `FALSE`
-+ `template`– filters by [used](http://getkirby.com/docs/cheatsheet/page/template) (and not by [intended](http://getkirby.com/docs/cheatsheet/page/intended-template)) template
++ `template`– filters by [used template](http://getkirby.com/docs/cheatsheet/page/template) 
++ `intendedTemplate` filters by [intended](http://getkirby.com/docs/cheatsheet/page/intended-template) template
++ `filterBy`, `filterMethod` and `filterValue` make use of the [filterBy](http://getkirby.com/docs/cheatsheet/pages/filterBy) method for pages
+
+
 
 ### Example
 
 ```
 ...
 fields:
-  mysubpagelist:
-    label: My Subpagelist
-      type:  subpagelist
+	mysubpagelist:
+		label: My Subpagelist
+		type:  subpagelist
 		
-      flip:  true
-      filter:
-        visible: true
-        template: mytemplate
+		flip:  true
+		filter:
+			visible: true
+			template: mytemplate						
 ...
 ```
 

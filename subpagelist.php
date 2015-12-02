@@ -5,7 +5,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   2.0.2
+ * @version   2.0.3
  */
 
 use Kirby\Panel\Snippet;
@@ -130,7 +130,6 @@ class SubpagelistField extends BaseField {
       if (!empty($filter['filterBy']) && !empty($filter['filterMethod']) && !empty($filter['filterValue'])) {
         $subpages = $subpages->filterBy($filter['filterBy'],$filter['filterMethod'],$filter['filterValue']);
       }
-
       
     }
 
