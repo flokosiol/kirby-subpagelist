@@ -5,7 +5,7 @@
  * @package   Kirby CMS
  * @author    Flo Kosiol <git@flokosiol.de>
  * @link      http://flokosiol.de
- * @version   2.0.3
+ * @version   2.0.4
  */
 
 use Kirby\Panel\Snippet;
@@ -114,9 +114,17 @@ class SubpagelistField extends BaseField {
         $subpages = $subpages->invisible();
       }
 
-      // only specific template
+      // only specific template(s)
       if (!empty($filter['template'])) {
-        $subpages = $subpages->filterBy('template',$filter['template']);
+        if (is_array($filter['template'])) {
+          $filterTemplates = $filter['template'];
+          $subpages = $subpages->filter(function($child) use ($filterTemplates) {
+            return in_array($child->intendedTemplate(), $filterTemplates);
+          });          
+        }
+        else {
+          $subpages = $subpages->filterBy('template',$filter['template']);
+        }
       }
 
       // only specific intendedTemplate

@@ -45,3 +45,8 @@
 
 ### Added
 + additional filter 
+
+## 2.0.4
+
+### Added
++ changed template filter to handle multiple templates
