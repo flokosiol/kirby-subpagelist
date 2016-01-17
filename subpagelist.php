@@ -119,7 +119,7 @@ class SubpagelistField extends BaseField {
         if (is_array($filter['template'])) {
           $filterTemplates = $filter['template'];
           $subpages = $subpages->filter(function($child) use ($filterTemplates) {
-            return in_array($child->intendedTemplate(), $filterTemplates);
+            return in_array($child->template(), $filterTemplates);
           });          
         }
         else {
@@ -127,9 +127,17 @@ class SubpagelistField extends BaseField {
         }
       }
 
-      // only specific intendedTemplate
+      // only specific intendedTemplate(s)
       if (!empty($filter['intendedTemplate'])) {
-        $subpages = $subpages->filterBy('intendedTemplate',$filter['template']);
+        if (is_array($filter['intendedTemplate'])) {
+          $filterTemplates = $filter['intendedTemplate'];
+          $subpages = $subpages->filter(function($child) use ($filterTemplates) {
+            return in_array($child->intendedTemplate(), $filterTemplates);
+          });          
+        }
+        else {
+          $subpages = $subpages->filterBy('intendedTemplate',$filter['intendedTemplate']);
+        }
       }
 
       // filterBy
