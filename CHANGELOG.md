@@ -49,4 +49,4 @@
 ## 2.0.4
 
 ### Added
-+ changed template filter to handle multiple templates
++ changed template filter to handle multiple templates and multiple intended templates

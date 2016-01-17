@@ -69,8 +69,8 @@ There are some optional parameter, which change the display of the subpagelist
 The parameter `filter` needs some more configuration:
 
 + `visible`– returns only visible pages if set to `TRUE` and only invisible ones if set to `FALSE`
-+ `template`– filters by [used template](http://getkirby.com/docs/cheatsheet/page/template) 
-+ `intendedTemplate` filters by [intended](http://getkirby.com/docs/cheatsheet/page/intended-template) template
++ `template`– filters by (one or more) [used templates](http://getkirby.com/docs/cheatsheet/page/template) 
++ `intendedTemplate` filters by (one or more) [intended templates](http://getkirby.com/docs/cheatsheet/page/intended-template)
 + `filterBy`, `filterMethod` and `filterValue` make use of the [filterBy](http://getkirby.com/docs/cheatsheet/pages/filterBy) method for pages
 
 
