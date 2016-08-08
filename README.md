@@ -1,4 +1,4 @@
-# Kirby 2 Subpagelist
+# Kirby Subpagelist
 
 ![Version](https://img.shields.io/badge/version-2.0.4-green.svg)
 
@@ -73,7 +73,7 @@ The parameter `filter` needs some more configuration:
 + `visible`– returns only visible pages if set to `TRUE` and only invisible ones if set to `FALSE`
 + `template`– filters by (one or more) [used templates](http://getkirby.com/docs/cheatsheet/page/template) 
 + `intendedTemplate` filters by (one or more) [intended templates](http://getkirby.com/docs/cheatsheet/page/intended-template)
-+ `filterBy`, `filterMethod` and `filterValue` make use of the [filterBy](http://getkirby.com/docs/cheatsheet/pages/filterBy) method for pages
++ `filterBy`, `filterMethod` and `filterValue` make use of the [filterBy](http://getkirby.com/docs/cheatsheet/pages/filterBy) method for pages ([Example](https://github.com/flokosiol/kirby-subpagelist/issues/7#issuecomment-229727047))
 
 
 
