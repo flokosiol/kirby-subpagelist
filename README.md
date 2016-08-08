@@ -1,4 +1,6 @@
-# Kirby 2 // Subpagelist
+# Kirby 2 Subpagelist
+
+![Version](https://img.shields.io/badge/version-2.0.4-green.svg)
 
 With this field plugin for [Kirby 2](http://getkirby.com) you can display the list of subpages in the main column of the panel. Simply add the new field „subpagelist” to your blueprints.
 
